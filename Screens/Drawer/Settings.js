@@ -1,0 +1,81 @@
+import * as React from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  Alert,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  FlatList,
+  Platform,
+  ImageBackground,
+} from 'react-native';
+
+import Constants from 'expo-constants';
+import firebase from 'firebase';
+import { Header } from 'react-native-elements';
+
+import '@expo/vector-icons';
+
+class Settings extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  toggleDrawer = () => {
+    this.props.navigation.toggleDrawer();
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <Header
+          containerStyle={{ height: Platform.OS === 'ios' ? 70 : 90 - 24 }}
+          leftComponent={{
+            icon: 'menu',
+            color: '#fff',
+            onPress: () => this.toggleDrawer(),
+          }}
+          centerComponent={{ text: 'Settings', style: { color: '#fff' } }}
+          rightComponent={{ icon: 'home', color: '#fff' }}
+          backgroundColor="#4F92A7"
+        />
+        <Image
+          source={{
+            uri:
+              'https://www.simple-life.com/wp-content/uploads/Coming-Soon-Long-1-1005x1024.png',
+          }}
+          style={{ width: '100%', height: '60%' }}
+        />
+      </View>
+    );
+  }
+}
+export default Settings;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    alignItems: 'center',
+  },
+
+  Textinput2: {
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  button: {
+    borderWidth: 5,
+    borderColor: 'blue',
+    marginTop: 50,
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 15,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
